@@ -1,0 +1,612 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Vaadin application",
+    "version" : "0.0.1"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:8080/connect",
+    "description" : "Vaadin backend"
+  } ],
+  "tags" : [ {
+    "name" : "VisitEndpoint",
+    "description" : "",
+    "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/visit/VisitEndpoint.java"
+  }, {
+    "name" : "VetEndpoint",
+    "description" : "",
+    "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/vet/VetEndpoint.java"
+  }, {
+    "name" : "OwnerEndpoint",
+    "description" : "",
+    "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/owner/OwnerEndpoint.java"
+  }, {
+    "name" : "CrashEndpoint",
+    "description" : "",
+    "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/system/CrashEndpoint.java"
+  }, {
+    "name" : "PetEndpoint",
+    "description" : "",
+    "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/owner/PetEndpoint.java"
+  } ],
+  "paths" : {
+    "/VetEndpoint/list" : {
+      "post" : {
+        "tags" : [ "VetEndpoint" ],
+        "operationId" : "VetEndpoint_list_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "description" : "",
+                  "items" : {
+                    "$ref" : "#/components/schemas/org.springframework.samples.petclinic.vet.Vet"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "vaadin-connect-oauth2" : [ ]
+        } ]
+      }
+    },
+    "/PetEndpoint/findById" : {
+      "post" : {
+        "tags" : [ "PetEndpoint" ],
+        "operationId" : "PetEndpoint_findById_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "required" : [ "id" ],
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "number",
+                    "nullable" : true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "description" : "",
+                  "nullable" : true,
+                  "allOf" : [ {
+                    "$ref" : "#/components/schemas/org.springframework.samples.petclinic.dto.PetDTO"
+                  } ]
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "vaadin-connect-oauth2" : [ ]
+        } ]
+      }
+    },
+    "/PetEndpoint/findPetTypes" : {
+      "post" : {
+        "tags" : [ "PetEndpoint" ],
+        "operationId" : "PetEndpoint_findPetTypes_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "description" : "",
+                  "items" : {
+                    "$ref" : "#/components/schemas/org.springframework.samples.petclinic.owner.PetType"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "vaadin-connect-oauth2" : [ ]
+        } ]
+      }
+    },
+    "/PetEndpoint/save" : {
+      "post" : {
+        "tags" : [ "PetEndpoint" ],
+        "operationId" : "PetEndpoint_save_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "required" : [ "pet" ],
+                "type" : "object",
+                "properties" : {
+                  "pet" : {
+                    "nullable" : true,
+                    "allOf" : [ {
+                      "$ref" : "#/components/schemas/org.springframework.samples.petclinic.dto.PetDTO"
+                    } ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "description" : ""
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "vaadin-connect-oauth2" : [ ]
+        } ]
+      }
+    },
+    "/OwnerEndpoint/findById" : {
+      "post" : {
+        "tags" : [ "OwnerEndpoint" ],
+        "operationId" : "OwnerEndpoint_findById_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "required" : [ "id" ],
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "number",
+                    "nullable" : true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "description" : "",
+                  "nullable" : true,
+                  "allOf" : [ {
+                    "$ref" : "#/components/schemas/org.springframework.samples.petclinic.owner.Owner"
+                  } ]
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "vaadin-connect-oauth2" : [ ]
+        } ]
+      }
+    },
+    "/OwnerEndpoint/findByLastName" : {
+      "post" : {
+        "tags" : [ "OwnerEndpoint" ],
+        "operationId" : "OwnerEndpoint_findByLastName_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "required" : [ "lastName" ],
+                "type" : "object",
+                "properties" : {
+                  "lastName" : {
+                    "type" : "string",
+                    "nullable" : true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "description" : "",
+                  "items" : {
+                    "$ref" : "#/components/schemas/org.springframework.samples.petclinic.owner.Owner"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "vaadin-connect-oauth2" : [ ]
+        } ]
+      }
+    },
+    "/OwnerEndpoint/save" : {
+      "post" : {
+        "tags" : [ "OwnerEndpoint" ],
+        "operationId" : "OwnerEndpoint_save_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "required" : [ "owner" ],
+                "type" : "object",
+                "properties" : {
+                  "owner" : {
+                    "nullable" : true,
+                    "allOf" : [ {
+                      "$ref" : "#/components/schemas/org.springframework.samples.petclinic.owner.Owner"
+                    } ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "description" : ""
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "vaadin-connect-oauth2" : [ ]
+        } ]
+      }
+    },
+    "/VisitEndpoint/findByPetId" : {
+      "post" : {
+        "tags" : [ "VisitEndpoint" ],
+        "operationId" : "VisitEndpoint_findByPetId_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "required" : [ "petId" ],
+                "type" : "object",
+                "properties" : {
+                  "petId" : {
+                    "type" : "number",
+                    "nullable" : true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "description" : "",
+                  "items" : {
+                    "$ref" : "#/components/schemas/org.springframework.samples.petclinic.visit.Visit"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "vaadin-connect-oauth2" : [ ]
+        } ]
+      }
+    },
+    "/VisitEndpoint/save" : {
+      "post" : {
+        "tags" : [ "VisitEndpoint" ],
+        "description" : "Save a <code>Visit</code> to the data store, either inserting or updating it.",
+        "operationId" : "VisitEndpoint_save_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "required" : [ "petId", "visit" ],
+                "type" : "object",
+                "properties" : {
+                  "visit" : {
+                    "description" : "the <code>Visit</code> to save",
+                    "nullable" : true,
+                    "allOf" : [ {
+                      "$ref" : "#/components/schemas/org.springframework.samples.petclinic.visit.Visit"
+                    } ]
+                  },
+                  "petId" : {
+                    "type" : "number",
+                    "nullable" : true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "number",
+                  "description" : ""
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "vaadin-connect-oauth2" : [ ]
+        } ]
+      }
+    },
+    "/CrashEndpoint/triggerException" : {
+      "post" : {
+        "tags" : [ "CrashEndpoint" ],
+        "operationId" : "CrashEndpoint_triggerException_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "description" : "",
+                  "nullable" : true
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "vaadin-connect-oauth2" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "org.springframework.samples.petclinic.dto.PetDTO" : {
+        "required" : [ "birthDate", "name", "ownerFirstName", "ownerId", "ownerLastName", "typeId" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "number"
+          },
+          "name" : {
+            "type" : "string",
+            "x-annotations" : [ "NotBlank({message:\"must not be empty\"})" ]
+          },
+          "birthDate" : {
+            "type" : "string",
+            "format" : "date",
+            "x-annotations" : [ "NotNull({message:\"must not be empty\"})" ]
+          },
+          "typeId" : {
+            "type" : "number",
+            "x-annotations" : [ "NotNull({message:\"type must be selected\"})" ]
+          },
+          "typeName" : {
+            "type" : "string"
+          },
+          "ownerId" : {
+            "type" : "number"
+          },
+          "ownerFirstName" : {
+            "type" : "string"
+          },
+          "ownerLastName" : {
+            "type" : "string"
+          }
+        },
+        "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/dto/PetDTO.java"
+      },
+      "org.springframework.samples.petclinic.owner.Owner" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/org.springframework.samples.petclinic.model.Person"
+        }, {
+          "required" : [ "pets" ],
+          "type" : "object",
+          "properties" : {
+            "address" : {
+              "type" : "string",
+              "x-annotations" : [ "NotEmpty()" ]
+            },
+            "city" : {
+              "type" : "string",
+              "x-annotations" : [ "NotEmpty()" ]
+            },
+            "telephone" : {
+              "type" : "string",
+              "x-annotations" : [ "NotEmpty()", "Pattern({regexp:\"^\\\\d{10}$\", message:\"must be 10 digits\"})" ]
+            },
+            "pets" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/org.springframework.samples.petclinic.owner.Pet"
+              }
+            }
+          },
+          "description" : "Simple JavaBean domain object representing an owner."
+        } ],
+        "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/owner/Owner.java"
+      },
+      "org.springframework.samples.petclinic.owner.Pet" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/org.springframework.samples.petclinic.model.NamedEntity"
+        }, {
+          "required" : [ "birthDate", "type", "visits" ],
+          "type" : "object",
+          "properties" : {
+            "birthDate" : {
+              "type" : "string",
+              "format" : "date"
+            },
+            "type" : {
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/org.springframework.samples.petclinic.owner.PetType"
+              } ]
+            },
+            "owner" : {
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/org.springframework.samples.petclinic.owner.Owner"
+              } ]
+            },
+            "visits" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/org.springframework.samples.petclinic.visit.Visit"
+              }
+            }
+          },
+          "description" : "Simple business object representing a pet."
+        } ],
+        "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/owner/Pet.java"
+      },
+      "org.springframework.samples.petclinic.visit.Visit" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/org.springframework.samples.petclinic.model.BaseEntity"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "date" : {
+              "type" : "string",
+              "format" : "date"
+            },
+            "description" : {
+              "type" : "string",
+              "x-annotations" : [ "NotEmpty()" ]
+            },
+            "petId" : {
+              "type" : "number"
+            }
+          },
+          "description" : "Simple JavaBean domain object representing a visit."
+        } ],
+        "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/visit/Visit.java"
+      },
+      "org.springframework.samples.petclinic.model.BaseEntity" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "number"
+          }
+        },
+        "description" : "Simple JavaBean domain object with an id property. Used as a base class for objects\nneeding this property.",
+        "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/model/BaseEntity.java"
+      },
+      "org.springframework.samples.petclinic.owner.PetType" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/org.springframework.samples.petclinic.model.NamedEntity"
+        }, {
+          "type" : "object",
+          "properties" : { },
+          "description" : ""
+        } ],
+        "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/owner/PetType.java"
+      },
+      "org.springframework.samples.petclinic.model.NamedEntity" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/org.springframework.samples.petclinic.model.BaseEntity"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "name" : {
+              "type" : "string"
+            }
+          },
+          "description" : "Simple JavaBean domain object adds a name property to <code>BaseEntity</code>. Used as\na base class for objects needing these properties."
+        } ],
+        "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/model/NamedEntity.java"
+      },
+      "org.springframework.samples.petclinic.model.Person" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/org.springframework.samples.petclinic.model.BaseEntity"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "firstName" : {
+              "type" : "string",
+              "x-annotations" : [ "NotEmpty()" ]
+            },
+            "lastName" : {
+              "type" : "string",
+              "x-annotations" : [ "NotEmpty()" ]
+            }
+          },
+          "description" : "Simple JavaBean domain object representing an person."
+        } ],
+        "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/model/Person.java"
+      },
+      "org.springframework.samples.petclinic.vet.Vet" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/org.springframework.samples.petclinic.model.Person"
+        }, {
+          "required" : [ "specialties" ],
+          "type" : "object",
+          "properties" : {
+            "specialties" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/org.springframework.samples.petclinic.vet.Specialty"
+              }
+            }
+          },
+          "description" : "Simple JavaBean domain object representing a veterinarian."
+        } ],
+        "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/vet/Vet.java"
+      },
+      "org.springframework.samples.petclinic.vet.Specialty" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/org.springframework.samples.petclinic.model.NamedEntity"
+        }, {
+          "type" : "object",
+          "properties" : { },
+          "description" : "Models a {@link Vet Vet's} specialty (for example, dentistry)."
+        } ],
+        "x-vaadin-file-path" : "file:///home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java/org/springframework/samples/petclinic/vet/Specialty.java"
+      }
+    },
+    "securitySchemes" : {
+      "vaadin-connect-oauth2" : {
+        "type" : "oauth2",
+        "flows" : {
+          "password" : {
+            "tokenUrl" : "/oauth/token",
+            "scopes" : { }
+          }
+        }
+      }
+    }
+  }
+}

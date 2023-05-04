@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PetDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Hilla PetClinic</a> &gt; <a href="index.source.html" class="el_package">org.springframework.samples.petclinic.dto</a> &gt; <span class="el_source">PetDTO.java</span></div><h1>PetDTO.java</h1><pre class="source lang-java linenums">package org.springframework.samples.petclinic.dto;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import java.time.LocalDate;
+
+import dev.hilla.Nonnull;
+
+<span class="nc" id="L10">public class PetDTO {</span>
+
+	private Integer id;
+
+	@Nonnull
+	@NotBlank(message = &quot;must not be empty&quot;)
+	private String name;
+
+	@Nonnull
+	@NotNull(message = &quot;must not be empty&quot;)
+	@PastOrPresent
+	private LocalDate birthDate;
+
+	@Nonnull
+	@NotNull(message = &quot;type must be selected&quot;)
+	private Integer typeId;
+
+	private String typeName;
+
+	@Nonnull
+	private Integer ownerId;
+
+	@Nonnull
+	private String ownerFirstName;
+
+	@Nonnull
+	private String ownerLastName;
+
+	public Integer getId() {
+<span class="nc" id="L39">		return id;</span>
+	}
+
+	public void setId(Integer id) {
+<span class="nc" id="L43">		this.id = id;</span>
+<span class="nc" id="L44">	}</span>
+
+	public String getName() {
+<span class="nc" id="L47">		return this.name;</span>
+	}
+
+	public void setName(String name) {
+<span class="nc" id="L51">		this.name = name;</span>
+<span class="nc" id="L52">	}</span>
+
+	public LocalDate getBirthDate() {
+<span class="nc" id="L55">		return this.birthDate;</span>
+	}
+
+	public void setBirthDate(LocalDate birthDate) {
+<span class="nc" id="L59">		this.birthDate = birthDate;</span>
+<span class="nc" id="L60">	}</span>
+
+	public Integer getTypeId() {
+<span class="nc" id="L63">		return this.typeId;</span>
+	}
+
+	public void setTypeId(Integer typeId) {
+<span class="nc" id="L67">		this.typeId = typeId;</span>
+<span class="nc" id="L68">	}</span>
+
+	public String getTypeName() {
+<span class="nc" id="L71">		return this.typeName;</span>
+	}
+
+	public void setTypeName(String typeName) {
+<span class="nc" id="L75">		this.typeName = typeName;</span>
+<span class="nc" id="L76">	}</span>
+
+	public Integer getOwnerId() {
+<span class="nc" id="L79">		return this.ownerId;</span>
+	}
+
+	public void setOwnerId(Integer ownerId) {
+<span class="nc" id="L83">		this.ownerId = ownerId;</span>
+<span class="nc" id="L84">	}</span>
+
+	public String getOwnerFirstName() {
+<span class="nc" id="L87">		return this.ownerFirstName;</span>
+	}
+
+	public void setOwnerFirstName(String ownerFirstName) {
+<span class="nc" id="L91">		this.ownerFirstName = ownerFirstName;</span>
+<span class="nc" id="L92">	}</span>
+
+	public String getOwnerLastName() {
+<span class="nc" id="L95">		return this.ownerLastName;</span>
+	}
+
+	public void setOwnerLastName(String ownerLastName) {
+<span class="nc" id="L99">		this.ownerLastName = ownerLastName;</span>
+<span class="nc" id="L100">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

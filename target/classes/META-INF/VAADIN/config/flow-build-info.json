@@ -1,0 +1,18 @@
+{
+  "productionMode": false,
+  "useDeprecatedV14Bootstrapping": false,
+  "eagerServerLoad": false,
+  "npmFolder": "/home/jenkins-server/Claude/spring-petclinic-hilla",
+  "node.version": "v17.3.0",
+  "node.download.root": "https://nodejs.org/dist/",
+  "generatedFolder": "/home/jenkins-server/Claude/spring-petclinic-hilla/target/frontend",
+  "frontendFolder": "/home/jenkins-server/Claude/spring-petclinic-hilla/frontend",
+  "connect.javaSourceFolder": "/home/jenkins-server/Claude/spring-petclinic-hilla/src/main/java",
+  "javaResourceFolder": "/home/jenkins-server/Claude/spring-petclinic-hilla/src/main/resources",
+  "connect.applicationProperties": "/home/jenkins-server/Claude/spring-petclinic-hilla/src/main/resources/application.properties",
+  "connect.openApiFile": "/home/jenkins-server/Claude/spring-petclinic-hilla/target/generated-resources/openapi.json",
+  "project.frontend.generated": "/home/jenkins-server/Claude/spring-petclinic-hilla/frontend/generated",
+  "pnpm.enable": false,
+  "require.home.node": false,
+  "build.folder": "target"
+}

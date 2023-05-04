@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.32">
+<file name="/home/jenkins-server/Claude/spring-petclinic-hilla/frontend/generated/vite-devmode.ts">
+</file>
+<file name="/home/jenkins-server/Claude/spring-petclinic-hilla/frontend/generated/vaadin-featureflags.ts">
+</file>
+<file name="/home/jenkins-server/Claude/spring-petclinic-hilla/vite.generated.ts">
+</file>
+</checkstyle>

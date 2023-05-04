@@ -1,0 +1,13 @@
+{
+  "frontendFolder": "/home/jenkins-server/Claude/spring-petclinic-hilla/frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "/home/jenkins-server/Claude/spring-petclinic-hilla/target/frontend",
+  "staticOutput": "/home/jenkins-server/Claude/spring-petclinic-hilla/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "frontendBundleOutput": "/home/jenkins-server/Claude/spring-petclinic-hilla/target/classes/META-INF/VAADIN/webapp",
+  "addonFrontendFolder": "target/flow-frontend/",
+  "themeName": "petclinic",
+  "clientServiceWorkerSource": "/home/jenkins-server/Claude/spring-petclinic-hilla/target/sw.ts",
+  "pwaEnabled": false,
+  "offlinePath": "'offline.html'"
+}

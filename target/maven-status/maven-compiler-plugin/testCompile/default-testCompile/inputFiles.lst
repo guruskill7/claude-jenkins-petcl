@@ -1,0 +1,6 @@
+/home/jenkins-server/Claude/spring-petclinic-hilla/src/test/java/org/springframework/samples/petclinic/service/EntityUtils.java
+/home/jenkins-server/Claude/spring-petclinic-hilla/src/test/java/org/springframework/samples/petclinic/vet/VetTests.java
+/home/jenkins-server/Claude/spring-petclinic-hilla/src/test/java/org/springframework/samples/petclinic/service/ClinicServiceTests.java
+/home/jenkins-server/Claude/spring-petclinic-hilla/src/test/java/org/springframework/samples/petclinic/model/ValidatorTests.java
+/home/jenkins-server/Claude/spring-petclinic-hilla/src/test/java/org/springframework/samples/petclinic/owner/PetTypeFormatterTests.java
+/home/jenkins-server/Claude/spring-petclinic-hilla/src/test/java/org/springframework/samples/petclinic/PetclinicIntegrationTests.java

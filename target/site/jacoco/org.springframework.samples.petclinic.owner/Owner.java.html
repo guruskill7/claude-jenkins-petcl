@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Owner.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Hilla PetClinic</a> &gt; <a href="index.source.html" class="el_package">org.springframework.samples.petclinic.owner</a> &gt; <span class="el_source">Owner.java</span></div><h1>Owner.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2012-2019 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.springframework.samples.petclinic.owner;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.springframework.beans.support.MutableSortDefinition;
+import org.springframework.beans.support.PropertyComparator;
+import org.springframework.core.style.ToStringCreator;
+import org.springframework.samples.petclinic.model.Person;
+
+import dev.hilla.Nonnull;
+
+/**
+ * Simple JavaBean domain object representing an owner.
+ *
+ * @author Ken Krebs
+ * @author Juergen Hoeller
+ * @author Sam Brannen
+ * @author Michael Isvy
+ */
+@Entity
+@Table(name = &quot;owners&quot;)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = &quot;id&quot;, scope = Owner.class)
+<span class="fc" id="L52">public class Owner extends Person {</span>
+
+	@Column(name = &quot;address&quot;)
+	@NotEmpty
+	private String address;
+
+	@Column(name = &quot;city&quot;)
+	@NotEmpty
+	private String city;
+
+	@Column(name = &quot;telephone&quot;)
+	@NotEmpty
+	@Pattern(regexp = &quot;^\\d{10}$&quot;, message = &quot;must be 10 digits&quot;)
+	private String telephone;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = &quot;owner&quot;)
+	@Nonnull
+	private Set&lt;@Nonnull Pet&gt; pets;
+
+	public String getAddress() {
+<span class="nc" id="L72">		return this.address;</span>
+	}
+
+	public void setAddress(String address) {
+<span class="fc" id="L76">		this.address = address;</span>
+<span class="fc" id="L77">	}</span>
+
+	public String getCity() {
+<span class="nc" id="L80">		return this.city;</span>
+	}
+
+	public void setCity(String city) {
+<span class="fc" id="L84">		this.city = city;</span>
+<span class="fc" id="L85">	}</span>
+
+	public String getTelephone() {
+<span class="nc" id="L88">		return this.telephone;</span>
+	}
+
+	public void setTelephone(String telephone) {
+<span class="fc" id="L92">		this.telephone = telephone;</span>
+<span class="fc" id="L93">	}</span>
+
+	protected Set&lt;Pet&gt; getPetsInternal() {
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">		if (this.pets == null) {</span>
+<span class="nc" id="L97">			this.pets = new HashSet&lt;&gt;();</span>
+		}
+<span class="fc" id="L99">		return this.pets;</span>
+	}
+
+	protected void setPetsInternal(Set&lt;Pet&gt; pets) {
+<span class="nc" id="L103">		this.pets = pets;</span>
+<span class="nc" id="L104">	}</span>
+
+	public List&lt;Pet&gt; getPets() {
+<span class="fc" id="L107">		List&lt;Pet&gt; sortedPets = new ArrayList&lt;&gt;(getPetsInternal());</span>
+<span class="fc" id="L108">		PropertyComparator.sort(sortedPets, new MutableSortDefinition(&quot;name&quot;, true, true));</span>
+<span class="fc" id="L109">		return Collections.unmodifiableList(sortedPets);</span>
+	}
+
+	public void addPet(Pet pet) {
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">		if (pet.isNew()) {</span>
+<span class="fc" id="L114">			getPetsInternal().add(pet);</span>
+		}
+<span class="fc" id="L116">		pet.setOwner(this);</span>
+<span class="fc" id="L117">	}</span>
+
+	/**
+	 * Return the Pet with the given name, or null if none found for this Owner.
+	 * @param name to test
+	 * @return true if pet name is already in use
+	 */
+	public Pet getPet(String name) {
+<span class="nc" id="L125">		return getPet(name, false);</span>
+	}
+
+	/**
+	 * Return the Pet with the given name, or null if none found for this Owner.
+	 * @param name to test
+	 * @return true if pet name is already in use
+	 */
+	public Pet getPet(String name, boolean ignoreNew) {
+<span class="nc" id="L134">		name = name.toLowerCase();</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">		for (Pet pet : getPetsInternal()) {</span>
+<span class="nc bnc" id="L136" title="All 4 branches missed.">			if (!ignoreNew || !pet.isNew()) {</span>
+<span class="nc" id="L137">				String compName = pet.getName();</span>
+<span class="nc" id="L138">				compName = compName.toLowerCase();</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">				if (compName.equals(name)) {</span>
+<span class="nc" id="L140">					return pet;</span>
+				}
+			}
+<span class="nc" id="L143">		}</span>
+<span class="nc" id="L144">		return null;</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="nc" id="L149">		return new ToStringCreator(this)</span>
+
+<span class="nc" id="L151">				.append(&quot;id&quot;, this.getId()).append(&quot;new&quot;, this.isNew()).append(&quot;lastName&quot;, this.getLastName())</span>
+<span class="nc" id="L152">				.append(&quot;firstName&quot;, this.getFirstName()).append(&quot;address&quot;, this.address).append(&quot;city&quot;, this.city)</span>
+<span class="nc" id="L153">				.append(&quot;telephone&quot;, this.telephone).toString();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
